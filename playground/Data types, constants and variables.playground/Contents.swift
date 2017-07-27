@@ -81,9 +81,44 @@ index = 3
 var treeArray = ["Oak", "Pine", "Yew", "Birch"]
 
 if index != nil {
-    print(treeArray[index!])
+    print(treeArray[index!]) // using "index" would throw an error
 } else {
     print("Index is nil")
 }
+
+//As an alternatiove to forced unwrapping, the value assigned to an optional may be allocated to a temporary variable or constant using optional binding. Heres the syntax:
+//  if let constantName = optionalName{run this code}
+//  if var variableName = optionalName{run this code}
+// lets redo the code from above using optional binding:
+
+index = 2
+
+treeArray = ["Oak", "Pine", "Evergreen", "Yew"]
+
+if let myValue = index {
+    print(treeArray[myValue]) // using "index" would throw an error
+} else {
+    print("Index is nil")
+}
+// Do note that the lifespan(scope) of the constant "myValue" is the conditional statement that it pertains to. myValue cannot be referenced outside of the optional binding.
+// Optional binding can be used to unwrap multiple optionals at the same time:
+
+var pet1: String?
+var pet2: String?
+var pet3: String?
+
+pet1 = "Pitbull"
+pet2 = "Daschund"
+pet3 = "German Sheperd"
+
+if let firstPet = pet1, let secondPet = pet2, let thirdPet = pet3{
+    print(firstPet)
+    print(secondPet)
+    print(thirdPet)
+} else {
+    print("Pet(s) could not be found")
+}
+
+
 
 
