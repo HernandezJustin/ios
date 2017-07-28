@@ -64,7 +64,7 @@ print("\(myTuple2.comment) lets count to \(myTuple2.count)")
 // Optional Data types
 // The purpose of the optional type is to provide a safe and consistent approach to handling situations where a variable or constant may not have any value assigned to it. Variables are declared as being optional by placing a ? characted after the type declaration
 
-var index: Int? // index is declared as an optional
+var index: Int? = 32// index is declared as an optional
 // the variable index can now have either an integer value assigned to it or have nothing assigned to it. An optional with no value assigned to it has a value of nil
 
 if index != nil {
@@ -106,6 +106,7 @@ if let myValue = index {
 var pet1: String?
 var pet2: String?
 var pet3: String?
+var petCount: Int = 3
 
 pet1 = "Pitbull"
 pet2 = "Daschund"
@@ -119,6 +120,63 @@ if let firstPet = pet1, let secondPet = pet2, let thirdPet = pet3{
     print("Pet(s) could not be found")
 }
 
+// A boolean clause can be added to the optional binding as well
 
+if let firstPet = pet1, let secondPet = pet2, let thirdPet = pet3, petCount > 3{
+    print(firstPet)
+    print(secondPet)
+    print(thirdPet)
+} else { //this else clause is executed because petCount is not greater than 3
+    print("Pet(s) could not be found")
+}
 
+// Optionals can be declared as being implicitly unwrapped. When an optional is declared that way, the underlying value can be accessed without having to perform forced unwrapping or optional binding. An optional is declared as implicitly unwrapped by simply substituting the question mark with an exclamation point "!"
+
+var implicitIndex: Int! // This optional is implicitly unwrapped
+
+implicitIndex = 1
+
+treeArray = ["Oak", "Pine", "Evergreen", "Yew"]
+
+if implicitIndex != nil {
+    print(treeArray[implicitIndex])
+} else {
+    print("index does not contain a value")
+}
+
+// In swift, it is not possible to assign a value of nil to a non-optional variable or constant i.e
+// var myInt = nil
+// let myConstant = nil
+
+// When writing swift code situations will occur where the compiler is unable to identify the specific type of a value. This is often the case when a value of ambiguous or unexpected type is returned from a method or function call. In this situation it may be necessary to let the compiler know the type of value that your code is expecting or requires using the "as" keyword (referred to as type casting)
+
+// There are two different types of casting: upcasting and downcasting. Upcasting is when an object of a given class is cast to one of its superclasses while downcasting does the opposite. Upcasting to a superclass is a guaranteed conversion while downcasting is not guaranteed to be converted safely(downcasting could result in a runtime error). Upcasting is denoted by the syntax "as" while downcasting is "as!"
+
+/* Here is an example of an upcast:
+ let myButton : UIButton = UIButton()
+ let myControl = myButton as UIControl
+ UIControl is the parent class of UIButton
+ 
+ Here is an example of a downcast(error provoking example):
+ let myScrollView: UIScrollView = UIScrollView()
+ let myTextView = myScrollView as! UITextView
+ UITextView is a child class of UIScrollView but this conversion is not possible with downcasting
+ */
+
+// A safer approach to downcasting is to perform an optional binding using "as?". If the conversion is performed successfully, an optional value of the specified type is returned, otherwise the optional value will be nil:
+
+/*
+if let classB = classA as? UITextView {
+    print("type cast to UITextView succeeded")
+} else {
+    print("type cast to UITextView failed")
+}
+*/
+
+/* To check if an object is an instance of a given class, you can type check it using a conditional with the "is" keyword
+
+ if myObject is myClass {
+    //myObject is an instance of myClass
+ }
+*/
 
