@@ -174,3 +174,27 @@ helloWorld()
     closure code goes here
  }*/
 
+let multiply = {(_ val1: Int, _ val2: Int) -> Int in
+    return val1 * val2
+}
+
+let multiplyresult = multiply(10, 10)
+//Note that the syntax is similar to that used for declaring swift functions with the exception that the closure expression does not have a neame, the params and return type are included in the braces and the in keyword is used to indicate the start of the closure expression code. Functions are closure expressions.
+
+//Closure expressions are often used when declaring completion handlers for asynchronous method calls. In other words, when devleoping iOS applications it will often be necessary to make calls to the operating system where the requested task is performed in the background allowing the application to continue with other tasks. Typically in such a scenario, the system will notify the application of the completion of the task and return any results by calling the completion handler that was declared when the method was called. 
+
+//Here is an example for a swift closure(A self contained block of code and one or more variables that exist in the context surrounding that code block):
+
+func functionA() -> () -> Int {
+    var counter = 0
+    
+    func functionB() -> Int {
+        return counter + 10
+    }
+    return functionB
+}
+
+let myClosure = functionA()
+let closureResult = myClosure()
+
+//FunctionA returns a closure since functionB relies on the counter variable which is declared outside of functionB's local scope.
