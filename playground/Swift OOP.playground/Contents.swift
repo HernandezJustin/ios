@@ -40,6 +40,8 @@ class Enemy {
     //Like many OOP languages, swift has the ability to use the self keyword which indicates that the method or property belongs to the current class instance(Instead of writing Enemy.health, it is more practical to use self)
     func takePoisonDamage() {
         self.health -= 5
+        //Note: swift allows devs to omit self in most cases(The above statement can also be rewritten as health -= 5)
+        //One good example of where self is required is from within a closure expression. Another example would be working with a class that has a property named num, a function "x" in the class accepts a paramater with the same name, num. To reference the class property in that scenario, you would use self. To reference the paramater, you would simply omit self.
     }
     
     //Lets work with the init method which will be responsible for setting custom property values for our future class instances. When the init method is created, instances of the class must be initialized with the init method params.
