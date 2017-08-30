@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class Question {
+    let questionText: String
+    let correctAnswer: Bool
+    
+    init(_ question: String, _ answer: Bool) {
+        questionText = question
+        correctAnswer = answer
+    }
+}
